@@ -55,6 +55,10 @@ public class VideoListAdapter extends BaseAdapter {
             if (holder.imgThumbnail != null) {
                 Glide.with(mContext).load(video.thumbnailUrl).into(holder.imgThumbnail);
             }
+            if (holder.tvTitle != null){
+                holder.tvTitle.setText(video.getTitle());
+            }
+
         }
 
         return convertView;
@@ -66,6 +70,7 @@ public class VideoListAdapter extends BaseAdapter {
         }
 
         mVideos.add(video);
+        notifyDataSetChanged();
     }
 
     public class ViewHolder {
@@ -74,6 +79,7 @@ public class VideoListAdapter extends BaseAdapter {
 
         public ViewHolder(View itemView) {
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            imgThumbnail = (ImageView) itemView.findViewById(R.id.imgThumbnail);
         }
     }
 }
